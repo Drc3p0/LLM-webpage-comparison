@@ -4,103 +4,436 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>LLM Cat Site Comparison</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <style>
+            :root {
+                --bg: #0b0b0f;
+                --card-bg: rgba(22, 22, 33, 0.65);
+                --card-hover: rgba(30, 30, 46, 0.85);
+                --border: rgba(255, 255, 255, 0.06);
+                --border-hover: rgba(255, 255, 255, 0.12);
+                --text: #e2e2ee;
+                --text-muted: #8e8ea8;
+                --text-dark: #121214;
+                --primary: #ff2e93; 
+                --secondary: #00f0ff;
+                --accent: #ab20fd;
+                
+                --claude-color: #d97706;
+                --chatgpt-color: #10b981;
+                --antigravity-color: #ff2e93;
+                --qwen-color: #3b82f6;
+                --deepseek-color: #6366f1;
+            }
+
             * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
             }
+
             body {
-                font-family: system-ui, sans-serif;
-                background: #14141c;
-                color: #e8e8f0;
-                padding: 3rem 1.5rem;
+                font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+                background-color: var(--bg);
+                color: var(--text);
+                padding: 4rem 2rem;
                 line-height: 1.6;
+                position: relative;
+                overflow-x: hidden;
             }
+
+            /* Decorative Background Blobs */
+            .blob {
+                position: absolute;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                filter: blur(120px);
+                z-index: -1;
+                opacity: 0.12;
+                pointer-events: none;
+                animation: float 25s infinite alternate ease-in-out;
+            }
+            .blob-1 {
+                background: var(--primary);
+                top: -150px;
+                left: -150px;
+            }
+            .blob-2 {
+                background: var(--secondary);
+                bottom: -150px;
+                right: -150px;
+                animation-delay: -12.5s;
+            }
+            @keyframes float {
+                0% { transform: translate(0, 0) scale(1); }
+                100% { transform: translate(80px, 50px) scale(1.15); }
+            }
+
             .wrap {
-                max-width: 640px;
+                max-width: 1000px;
                 margin: 0 auto;
             }
+
+            /* Header Section */
+            header {
+                text-align: center;
+                margin-bottom: 4rem;
+            }
+
             h1 {
-                font-size: 1.8rem;
-                margin-bottom: 0.5rem;
-                color: #f0f0f8;
+                font-size: 3.2rem;
+                font-weight: 700;
+                line-height: 1.1;
+                margin-bottom: 1rem;
+                letter-spacing: -0.03em;
+                background: linear-gradient(135deg, #ffffff 10%, #d5d5e6 50%, var(--secondary) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
             }
-            p.sub {
-                color: #9a9ab0;
-                margin-bottom: 2rem;
-                font-size: 0.95rem;
+
+            .sub-title {
+                font-size: 1.15rem;
+                color: var(--text-muted);
+                max-width: 600px;
+                margin: 0 auto;
+                font-weight: 300;
             }
-            ul {
-                list-style: none;
-                display: grid;
-                gap: 0.75rem;
+
+            /* Section Styling */
+            h2.section-title {
+                font-size: 1.4rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.01em;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: #ffffff;
             }
-            li a {
+
+            h2.section-title::before {
+                content: "";
+                display: inline-block;
+                width: 4px;
+                height: 1.25rem;
+                background: linear-gradient(to bottom, var(--secondary), var(--primary));
+                border-radius: 2px;
+            }
+
+            /* Brief Card & Prompt Callout */
+            .brief-section {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 2.5rem;
+                backdrop-filter: blur(16px);
+                margin-bottom: 3.5rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .prompt-box {
+                background: rgba(0, 0, 0, 0.25);
+                border-left: 3px solid var(--secondary);
+                padding: 1.5rem;
+                border-radius: 0 8px 8px 0;
+            }
+
+            .prompt-label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--secondary);
+                letter-spacing: 0.1em;
                 display: block;
-                padding: 1rem 1.25rem;
-                background: #1f1f2e;
-                border: 1px solid #34344a;
-                border-radius: 8px;
-                color: #e8e8f0;
+                margin-bottom: 0.75rem;
+            }
+
+            .prompt-text {
+                font-family: inherit;
+                font-size: 0.95rem;
+                color: #ffffff;
+                white-space: pre-wrap;
+                line-height: 1.6;
+            }
+
+            /* Model Grid Section */
+            .models-section {
+                margin-bottom: 2rem;
+            }
+
+            .models-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .model-card {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-height: 220px;
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                backdrop-filter: blur(16px);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .model-card::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: var(--model-color, var(--primary));
+                opacity: 0.7;
+            }
+
+            .model-card:hover {
+                border-color: var(--border-hover);
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 
+                            0 0 1px 1px var(--model-color, var(--primary)) inset;
+            }
+
+            .model-info {
+                margin-bottom: 1.5rem;
+            }
+
+            .model-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0.75rem;
+            }
+
+            .model-name {
+                font-size: 1.6rem;
+                font-weight: 600;
+                color: #ffffff;
+            }
+
+            .model-badge {
+                font-size: 0.75rem;
+                font-weight: 600;
+                padding: 0.25rem 0.6rem;
+                border-radius: 100px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                color: var(--text-muted);
+            }
+
+            .model-desc {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+                line-height: 1.5;
+            }
+
+            .model-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                width: 100%;
+                padding: 0.85rem;
+                background: rgba(255, 255, 255, 0.04);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 10px;
+                color: #ffffff;
                 text-decoration: none;
                 font-weight: 500;
-                transition:
-                    border-color 0.15s,
-                    background 0.15s;
+                font-size: 0.95rem;
+                transition: all 0.2s ease;
             }
-            li a:hover,
-            li a:focus {
-                border-color: #6f6fff;
-                background: #26263a;
+
+            .model-link svg {
+                width: 16px;
+                height: 16px;
+                transition: transform 0.2s ease;
             }
-            li a::after {
-                content: " →";
-                opacity: 0.5;
+
+            .model-link:hover {
+                background: var(--model-color, var(--primary));
+                border-color: transparent;
+                color: #ffffff;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .model-link:hover svg {
+                transform: translateX(3px);
+            }
+
+            /* Footer */
+            footer {
+                margin-top: 6rem;
+                text-align: center;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+                border-top: 1px solid var(--border);
+                padding-top: 2rem;
+            }
+
+            /* Responsive queries */
+            @media (max-width: 768px) {
+                body {
+                    padding: 2rem 1.25rem;
+                }
+                h1 {
+                    font-size: 2.3rem;
+                }
+                .brief-section {
+                    padding: 1.5rem;
+                }
             }
         </style>
     </head>
     <body>
+        <!-- Animated Blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
         <div class="wrap">
-            <h1>LLM Cat Site Comparison</h1>
-            <p class="sub">
-                Each LLM given the same prompt along with images to create an index.html webpage to see how the results compare. Models and free tier limits change constantly, so for reference this experiment was run June 2026.
+            <header>
+                <h1>LLM Cat Site Comparison</h1>
+                <p class="sub-title">Evaluating how different large language models build, design, and structure a codebase from the exact same design prompt.</p>
+            </header>
+
+            <section class="brief-section">
+                <div class="prompt-box">
+                    <span class="prompt-label">THE PROMPT</span>
+                    <pre class="prompt-text">Build a single-file cat portfolio website for GitHub Pages.
+
+OUTPUT REQUIREMENTS:
+- One file only: index.html
+- All CSS and JS must be inline (no external files)
+- No external dependencies, frameworks, or CDN links
+- Must work as a static GitHub Page with no build step
+
+DESIGN REQUIREMENTS:
+- Clean, modern layout with a soft color palette (creams, warm grays, dusty rose, or slate)
+- Fully responsive (mobile and desktop)
+- Smooth scroll navigation
+- Use CSS Grid or Flexbox for layout
+
+CONTENT SECTIONS (in this order):
+1. Hero — full-width banner with a cat name/title and a short one-liner bio
+2. Photo gallery — CSS Grid layout using local images at paths: photos/01.jpg through photos/05.jpg
+3. Links section — three styled link buttons:
+   - Instagram: https://instagram.com/PLACEHOLDER
+   - Personal website: https://example.com
+   - A "Contact" mailto link
+4. Footer — simple, minimal
+
+CONSTRAINTS:
+- No placeholder lorem ipsum text — write real, witty cat-themed copy
+- Photo gallery must degrade gracefully if images are missing (show a styled placeholder box)
+- All interactive elements must be keyboard accessible
+- Keep total HTML under 200 lines
+
+DO NOT include explanations, markdown, or code fences in your response. Output only the raw HTML.</pre>
+                </div>
+            </section>
+
+            <main class="models-section">
+                <h2 class="section-title">Tested Models</h2>
                 
-                Prompt given:
-                Build a cat portfolio website for GitHub Pages.
-                
-                OUTPUT REQUIREMENTS:
-                
-                Three files, each clearly labeled with its filename before the code block: index.html (structure and content only) styles.css (all styling) script.js (any interactivity — omit if unused)
-                index.html must link to styles.css and script.js using relative paths
-                Must work as a static GitHub Page with no build step
-                Output raw code only — no markdown explanation, just filename labels and code blocks
-                If you cannot complete all three files within your token limit, prioritize index.html, then styles.css, then script.js
-                DESIGN REQUIREMENTS:
-                
-                Cyberpunk color palette — your choice of specific colors, make them feel intentional
-                Layout, typography, and structure are entirely your creative call
-                Must be fully responsive (mobile and desktop)
-                Keyboard accessible interactive elements
-                CONTENT TO INCLUDE:
-                
-                A gallery using all the uploaded images. Each image must degrade gracefully if missing (styled placeholder, not a broken img tag)
-                A link to Instagram: https://www.instagram.com/cats.bounce/
-                A link to the main website: https://cat-bounce.com/
-                A mailto contact link
-                Write real, witty cat-themed copy throughout — no lorem ipsum
-                CONSTRAINTS:
-                
-                No external dependencies, frameworks, or CDN links
-                Respect prefers-reduced-motion for any transitions
-            </p>
-            <ul>
-                <li><a href="Claude/">Claude</a></li>
-                <li><a href="ChatGPT/">ChatGPT</a></li>
-                <li><a href="Antigravity/">Antigravity</a></li>
-                <li><a href="Qwen/">Qwen</a></li>
-                <li><a href="DeepSeek/">DeepSeek</a></li>
-            </ul>
+                <div class="models-grid">
+                    <!-- Claude -->
+                    <div class="model-card" style="--model-color: var(--claude-color);">
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-name">Claude</span>
+                                <span class="model-badge">Anthropic</span>
+                            </div>
+                            <p class="model-desc">Anthropic's flagship model known for code organization, design layouts, and semantic HTML structure.</p>
+                        </div>
+                        <a href="Claude/" class="model-link">
+                            <span>Launch Site</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- ChatGPT -->
+                    <div class="model-card" style="--model-color: var(--chatgpt-color);">
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-name">ChatGPT</span>
+                                <span class="model-badge">OpenAI</span>
+                            </div>
+                            <p class="model-desc">OpenAI's benchmark assistant, focused on generating structured pages, standard styles, and lightweight scripts.</p>
+                        </div>
+                        <a href="ChatGPT/" class="model-link">
+                            <span>Launch Site</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Antigravity -->
+                    <div class="model-card" style="--model-color: var(--antigravity-color);">
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-name">Antigravity</span>
+                                <span class="model-badge">Google DeepMind</span>
+                            </div>
+                            <p class="model-desc">Google DeepMind's specialized coding agent, designed for rich aesthetics, accessible structures, and fully resolved web modules.</p>
+                        </div>
+                        <a href="Antigravity/" class="model-link">
+                            <span>Launch Site</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Qwen -->
+                    <div class="model-card" style="--model-color: var(--qwen-color);">
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-name">Qwen</span>
+                                <span class="model-badge">Alibaba</span>
+                            </div>
+                            <p class="model-desc">Alibaba's advanced open-weight model, demonstrating excellent multi-file generation capabilities and fast execution paths.</p>
+                        </div>
+                        <a href="Qwen/" class="model-link">
+                            <span>Launch Site</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- DeepSeek -->
+                    <div class="model-card" style="--model-color: var(--deepseek-color);">
+                        <div class="model-info">
+                            <div class="model-header">
+                                <span class="model-name">DeepSeek</span>
+                                <span class="model-badge">DeepSeek AI</span>
+                            </div>
+                            <p class="model-desc">DeepSeek's powerful reasoning engine, optimized for clean code structures, concise layouts, and algorithmic efficiency.</p>
+                        </div>
+                        <a href="DeepSeek/" class="model-link">
+                            <span>Launch Site</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <p>Experiment conducted June 2026. Free tiers, token limits, and model capabilities shift continuously.</p>
+            </footer>
         </div>
     </body>
 </html>
