@@ -1,5 +1,7 @@
 # LLM-webpage-comparison
-Each LLM given the same prompt to create an index.html webpage to see how the results compare. Models and free tier limits change constantly, so for reference this experiment was run June 2026. 
+Each LLM was given the same prompt to create a static webpage with index.html, styles.css, and script.js to see how the results compare between LLMs.
+
+Claude one-shot results using Sonnet 4.6 (Low)
 
 ## Prompt given: 
 

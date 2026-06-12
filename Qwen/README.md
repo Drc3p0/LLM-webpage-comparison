@@ -1,7 +1,10 @@
 # LLM-webpage-comparison
-Each LLM given the same prompt to create an index.html webpage to see how the results compare. Models and free tier limits change constantly, so for reference this experiment was run June 2026. 
+Each LLM given the same prompt to create a static webpage with index.html, styles.css, and script.js to see how the results compare. 
 
-## Prompt given: 
+Qwen one-shot results using free version of Qwen3.7-Plus at chat.qwen.ai 
+Qwen changed filenames of images, so I told it to change them back to default. 
+
+Prompt given: 
 
 Build a cat portfolio website for GitHub Pages.
 

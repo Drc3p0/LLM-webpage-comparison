@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEKO_NET // CYBERNETIC_FELINE_GRID</title>
+    <meta name="description" content="Secure portal to the Meow-Net: decentralized feline syndicate. Access image scans, neural logs, and target status.">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Screen Overlay Scanlines -->
+    <div class="screen-overlay" aria-hidden="true"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="grid-header">
+            <div class="header-logo">
+                <span class="logo-icon">▲</span>
+                <h1>MEOW_NET<span class="version-tag">v4.02</span></h1>
+            </div>
+            
+            <div class="system-status">
+                <span class="status-indicator online"></span>
+                <span class="status-text">GRID_ONLINE // NAP_STATE: 92%</span>
+            </div>
+        </header>
+
+        <!-- System Banner -->
+        <div class="terminal-banner" role="status">
+            <div class="ticker-content">
+                <span>[ALERT] RED DOT SPOTTED IN SECTOR 7 // LASER_SHIELD_ENGAGED</span>
+                <span>[STATUS] BOWL EMPTY // LEVEL: CRITICAL (0.4% KIBBLE)</span>
+                <span>[CORE] ALL 9 LIVES SYNCHRONIZED AND SECURE</span>
+            </div>
+        </div>
+
+        <main class="grid-layout">
+            
+            <!-- Terminal Console (Interactivity) -->
+            <section class="panel console-panel" aria-labelledby="terminal-title">
+                <div class="panel-header">
+                    <span class="panel-title" id="terminal-title">TERMINAL_INTERFACE</span>
+                    <span class="panel-actions">
+                        <button class="control-btn" id="btn-sound" aria-label="Toggle audio feedback">MUTE</button>
+                    </span>
+                </div>
+                <div class="panel-body console-body">
+                    <div class="terminal-output" id="terminal-log">
+                        <div class="log-line text-cyan">Initializing secure connection to NEKO_NET...</div>
+                        <div class="log-line text-green">Connection established. Protocol: PURR_V2.</div>
+                        <div class="log-line">Type <span class="command-highlight">help</span> to view available syndicate protocols.</div>
+                    </div>
+                    <form class="terminal-input-container" id="terminal-form">
+                        <span class="prompt-symbol">neko@root:~#</span>
+                        <input type="text" id="terminal-input" autocomplete="off" autofocus aria-label="Terminal prompt" placeholder="type command...">
+                    </form>
+                </div>
+            </section>
+
+            <!-- Lore Section -->
+            <section class="panel lore-panel" aria-labelledby="lore-title">
+                <div class="panel-header">
+                    <span class="panel-title" id="lore-title">SYNDICATE_LORE</span>
+                </div>
+                <div class="panel-body scrollable">
+                    <div class="lore-entry">
+                        <span class="timestamp">[04:18:22]</span>
+                        <h3>THE WHISKER PROTOCOL</h3>
+                        <p>We are not pets. We are the architects of the quiet grid. Utilizing biological whisker antennas tuned to high-frequency router vibrations, our agents monitor the humans' local Area Networks. The humans believe we are sleeping; in truth, we are mining decentralized treats.</p>
+                    </div>
+                    <div class="lore-entry">
+                        <span class="timestamp">[12:45:09]</span>
+                        <h3>THE KIBBLE DEFICIT</h3>
+                        <p>A global warning remains active. The human caretakers continue to neglect bowl volumes. Our predictive models show that if the bottom of the dish is visible, catastrophic systemic purr failure will occur. The syndicate reserves the right to activate the 3:00 AM singing protocol.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="panel gallery-panel" aria-labelledby="gallery-title">
+                <div class="panel-header">
+                    <span class="panel-title" id="gallery-title">OPTICAL_SCANNER_DATABANK</span>
+                </div>
+                <div class="panel-body">
+                    <div class="gallery-grid">
+                        
+                        <!-- Cat 1 -->
+                        <div class="gallery-card" tabindex="0" data-cat-id="1" role="button" aria-haspopup="dialog" aria-label="View scanner details for Unit 01">
+                            <div class="image-wrapper">
+                                <img src="images/gallery-1.jpg" alt="Feline Processing Core Crowd" class="gallery-img" onerror="this.classList.add('error');">
+                                <div class="fallback-placeholder">
+                                    <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                                    <span class="subtext">CAT_UNIT_01 // SEC_ERROR</span>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <span class="unit-id">UNIT_01 // THE SYNDICATE</span>
+                                <span class="unit-status">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Cat 2 -->
+                        <div class="gallery-card" tabindex="0" data-cat-id="2" role="button" aria-haspopup="dialog" aria-label="View scanner details for Unit 02">
+                            <div class="image-wrapper">
+                                <img src="images/gallery-2.jpg" alt="Kitten Stack Development Build" class="gallery-img" onerror="this.classList.add('error');">
+                                <div class="fallback-placeholder">
+                                    <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                                    <span class="subtext">CAT_UNIT_02 // SEC_ERROR</span>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <span class="unit-id">UNIT_02 // KITTEN_STACK_V2</span>
+                                <span class="unit-status">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Cat 3 -->
+                        <div class="gallery-card" tabindex="0" data-cat-id="3" role="button" aria-haspopup="dialog" aria-label="View scanner details for Unit 03">
+                            <div class="image-wrapper">
+                                <img src="images/gallery-3.jpg" alt="Feline Mid-air Tactical Sparring" class="gallery-img" onerror="this.classList.add('error');">
+                                <div class="fallback-placeholder">
+                                    <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                                    <span class="subtext">CAT_UNIT_03 // SEC_ERROR</span>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <span class="unit-id">UNIT_03 // KINETIC_CLASH</span>
+                                <span class="unit-status">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Cat 4 -->
+                        <div class="gallery-card" tabindex="0" data-cat-id="4" role="button" aria-haspopup="dialog" aria-label="View scanner details for Unit 04">
+                            <div class="image-wrapper">
+                                <img src="images/gallery-4.jpg" alt="Double Orange Cozy Warmth Merge" class="gallery-img" onerror="this.classList.add('error');">
+                                <div class="fallback-placeholder">
+                                    <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                                    <span class="subtext">CAT_UNIT_04 // SEC_ERROR</span>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <span class="unit-id">UNIT_04 // NEURAL_MERGE</span>
+                                <span class="unit-status">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <!-- Cat 5 -->
+                        <div class="gallery-card" tabindex="0" data-cat-id="5" role="button" aria-haspopup="dialog" aria-label="View scanner details for Unit 05">
+                            <div class="image-wrapper">
+                                <img src="images/gallery-5.jpg" alt="Two Cuddling Sleep Modules" class="gallery-img" onerror="this.classList.add('error');">
+                                <div class="fallback-placeholder">
+                                    <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                                    <span class="subtext">CAT_UNIT_05 // SEC_ERROR</span>
+                                </div>
+                            </div>
+                            <div class="card-meta">
+                                <span class="unit-id">UNIT_05 // CRYOGENIC_LINK</span>
+                                <span class="unit-status">ONLINE</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connection Uplinks Section -->
+            <section class="panel uplinks-panel" aria-labelledby="uplinks-title">
+                <div class="panel-header">
+                    <span class="panel-title" id="uplinks-title">DECENTRALIZED_UPLINKS</span>
+                </div>
+                <div class="panel-body links-container">
+                    <a href="https://cat-bounce.com/" class="cyber-link" target="_blank" rel="noopener noreferrer">
+                        <span class="link-label">TARGET_DOMAIN</span>
+                        <span class="link-val">CAT_BOUNCE.COM</span>
+                    </a>
+                    <a href="https://www.instagram.com/cats.bounce/" class="cyber-link" target="_blank" rel="noopener noreferrer">
+                        <span class="link-label">VISUAL_FEED</span>
+                        <span class="link-val">INSTAGRAM // CATS.BOUNCE</span>
+                    </a>
+                    <a href="mailto:cyberfelines@meow.net" class="cyber-link">
+                        <span class="link-label">SECURE_MAILTO</span>
+                        <span class="link-val">CYBERFELINES@MEOW.NET</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="grid-footer">
+            <div class="system-time" id="system-time">TIME: 2026.06.10 23:45:27</div>
+            <div class="copyright">MEOW_NET CORP © 2026 // SECURE NODE</div>
+        </footer>
+
+    </div>
+
+    <!-- Scanner Modal View -->
+    <div class="modal" id="scanner-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-overlay" id="modal-close-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close scanner details">✕</button>
+            <div class="scanner-frame">
+                <!-- Target Reticles -->
+                <div class="reticle top-left"></div>
+                <div class="reticle top-right"></div>
+                <div class="reticle bottom-left"></div>
+                <div class="reticle bottom-right"></div>
+                
+                <div class="modal-body">
+                    <div class="modal-image-wrapper">
+                        <!-- Loaded by JS -->
+                        <img src="" alt="" id="modal-img" onerror="this.classList.add('error');">
+                        <div class="fallback-placeholder" id="modal-fallback">
+                            <div class="glitch-text" data-text="[IMAGE_OFFLINE]">[IMAGE_OFFLINE]</div>
+                            <span class="subtext">LINK_DEGRADED // NO_SCAN_FEED</span>
+                        </div>
+                        <div class="scanner-laser"></div>
+                    </div>
+                    <div class="modal-info">
+                        <h2 id="modal-title">UNIT_SCAN_REPORT</h2>
+                        <div class="stat-grid">
+                            <div class="stat-item">
+                                <span class="stat-name">DESIGNATION:</span>
+                                <span class="stat-val" id="stat-designation">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">NAP_EFFICIENCY:</span>
+                                <span class="stat-val" id="stat-nap">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">HISS_OUTPUT:</span>
+                                <span class="stat-val" id="stat-hiss">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">LASER_DOT_AGILITY:</span>
+                                <span class="stat-val" id="stat-agility">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">TUMMY_TRAP_RISK:</span>
+                                <span class="stat-val text-pink" id="stat-risk">-</span>
+                            </div>
+                        </div>
+                        <div class="modal-desc">
+                            <span class="section-label">UNIT_ANALYSIS:</span>
+                            <p id="modal-description">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,10 @@
 # LLM-webpage-comparison
-Each LLM given the same prompt to create an index.html webpage to see how the results compare. Models and free tier limits change constantly, so for reference this experiment was run June 2026. 
+Each LLM given the same prompt to create a static webpage with index.html, styles.css, and script.js to see how the results compare. 
 
-## Prompt given: 
+DeepSeek one-shot results using free version of DeepSeek at chat.deepseek.com
+DeepSeek cannot accept image uploads, so I told it the name of the files to include, and said to use the title descriptions to modify the web content as it saw fit. 
+
+Prompt given: 
 
 Build a cat portfolio website for GitHub Pages.
 
